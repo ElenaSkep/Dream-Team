@@ -53,7 +53,7 @@ public class LoginPage implements ActionListener {
 	frame.setSize(420,420);//sets the x-dimension, and y-dimension of application
 	frame.setLayout(null);
 	frame.setVisible(true);
-	frame.getContentPane().setBackground(new Color(50,180,0)); //change color of background
+	frame.getContentPane().setBackground(new Color(51,153,255)); //change color of background
 		
 	ImageIcon logoImage = new ImageIcon("logo.png");
 	frame.setIconImage(logoImage.getImage());
