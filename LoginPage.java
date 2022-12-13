@@ -1,12 +1,14 @@
 import java.lang.System;
-import java.util.HashMap;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;//javax.swing.JFrame + javax.swing.JButton + javax.swing.JTextField + javax.swing.JLabel;
 
-public class LoginPage implements ActionListener {
-	
+public class LoginPage extends Action implements ActionListener {
+	//private boolean loginSuccessful = false;
+
 	JFrame frame = new JFrame();
 	JLabel userIDLabel;
 	JLabel userPasswordLabel;
@@ -14,69 +16,79 @@ public class LoginPage implements ActionListener {
 	JPasswordField userPasswordField;
 	JButton loginButton;
 	JLabel messageLabel;
-	HashMap<String,String> logininfo = new HashMap<String,String>();
+
+	String[] usernames;
+	String[] passwords;
 
 	//constractor that has a hashmap as input.To make subjects with my hashmap
-	LoginPage(HashMap<String,String> loginInfoOriginal){
+	LoginPage(String[] usernames, String[] passwords){
 
-	logininfo = loginInfoOriginal; //my subject will have its hashmap with its own name and password
-		
-	JFrame frame = new JFrame();//creates the frame of my application
-	frame.setTitle("Log-in to Door2Door"); //sets title of my frame
-		
-	userIDLabel = new JLabel ("userID:");
-	userIDLabel.setBounds(50,100,75,25);//x,y,w,height
-	frame.add(userIDLabel);
+		this.usernames = usernames;
+		this.passwords = passwords;
+		JFrame frame = new JFrame();//creates the frame of my application
+		frame.setTitle("Log-in to Door2Door"); //sets title of my frame
 
-	userPasswordLabel = new JLabel ("password:");
-	userPasswordLabel.setBounds(50,150,75,25);
-	frame.add(userPasswordLabel);
+		userIDLabel = new JLabel ("userID:");
+		userIDLabel.setBounds(50,100,75,25);//x,y,w,height
+		frame.add(userIDLabel);
 
-	userIDField = new JTextField();
-	userIDField.setBounds(125,100,200,25);
-	frame.add(userIDField);
+		userPasswordLabel = new JLabel ("password:");
+		userPasswordLabel.setBounds(50,150,75,25);
+		frame.add(userPasswordLabel);
 
-	userPasswordField = new JPasswordField();
-	userPasswordField.setBounds(125,150,200,25);
-	frame.add(userPasswordField);
+		userIDField = new JTextField();
+		userIDField.setBounds(125,100,200,25);
+		frame.add(userIDField);
 
-	loginButton = new JButton("Login");
-	loginButton.setBounds(125,200,100,25);	
-	loginButton.addActionListener(this);//I wanted a subject of type Actionlistener
-	frame.add(loginButton);
-		
-	messageLabel = new JLabel("The text about the access will appear here");//message that show if login was successful
-	messageLabel.setBounds(125,250,250,35);
-	frame.add(messageLabel);
+		userPasswordField = new JPasswordField();
+		userPasswordField.setBounds(125,150,200,25);
+		frame.add(userPasswordField);
 
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit from application		
-	frame.setSize(420,420);//sets the x-dimension, and y-dimension of application
-	frame.setLayout(null);
-	frame.setVisible(true);
-	frame.getContentPane().setBackground(new Color(51,153,255)); //change color of background
-		
-	ImageIcon logoImage = new ImageIcon("logo.png");
-	frame.setIconImage(logoImage.getImage());
-	}
+		loginButton = new JButton("Login");
+		loginButton.setBounds(125,200,100,25);
+		loginButton.addActionListener(this);//I wanted a subject of type Actionlistener
+		frame.add(loginButton);
+
+		messageLabel = new JLabel("The text about the access will appear here");//message that show if login was successful
+		messageLabel.setBounds(125,250,250,35);
+		frame.add(messageLabel);
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit from application
+		frame.setSize(420,420);//sets the x-dimension, and y-dimension of application
+		frame.setLayout(null);
+		frame.setVisible(true);
+		frame.getContentPane().setBackground(new Color(50,180,0)); //change color of background
+
+		ImageIcon logoImage = new ImageIcon("logo.png");
+		frame.setIconImage(logoImage.getImage());
+	};
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==loginButton){
-			System.out.println("works");
+		if(e.getSource() == loginButton){
+			System.out.println("works7");
 			String userID = userIDField.getText();
 			String password = String.valueOf(userPasswordField.getPassword());//I am at password field thats why im using valueOf
-				if(logininfo.containsKey(userID)) {//logininfo is my HashMap
-					if(logininfo.get(userID).equals(password)){//remember HashMap is value and key so I "get" the password with the ID as my key
-						System.out.println("works");
-						messageLabel.setText("Login successful");
-						//will transfer to my welcome page
-					}else{
-						messageLabel.setText("Wrong password");
+			System.out.println("works8");
+					for (int i = 0; i < usernames.length; i++){
+						System.out.println("works2");
+						if(usernames[i] == userID){
+							System.out.println("works3");
+							if (passwords[i] == password){
+								messageLabel.setText("Login successful");
+								System.out.println("works4");
+								//WelcomePage welcome = new WelcomePage;
+								//will transfer to my welcome page
+							} else {
+								messageLabel.setText("Wrong password");
+								System.out.println("works5");
+							}
+						}else{
+							messageLabel.setText("User not found.Please sign in");
+							SignUpPage signUpPage = new SignUpPage(usernames, passwords);
+							System.out.println("works6");
+						}
 					}
-
-				}else{
-					messageLabel.setText("User not found.Please sign in");
-				}
 		}
 	}
 }

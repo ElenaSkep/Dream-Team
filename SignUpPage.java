@@ -2,13 +2,17 @@ import java.awt.*;
 import java.awt.Component;
 import java.lang.Object;
 import java.lang.System;
-import java.util.HashMap;
+import java.util.Arrays;
+import java.io.PrintWriter;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.awt.Color;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;//javax.swing.JFrame + javax.swing.JButton + javax.swing.JTextField + javax.swing.JLabel;
 
-public class SignUpPage implements ActionListener{
+public class SignUpPage extends Action implements ActionListener {
 
     JFrame frame = new JFrame();
 	JLabel userIDLabel;
@@ -19,17 +23,19 @@ public class SignUpPage implements ActionListener{
 	JButton ResetButton;
 	JLabel messageLabel;
 
-	HashMap<String,String> signUp = new HashMap<String,String>();
-
 	 private String username;
-
 	 private String password;
-//HashMap<String,String> SignUpInfoOriginal
+	 int count = 0;
 
-   SignUpPage(){
+     String[] usernames;
+	 String[] passwords;
 
-	//signUp = SignUpInfoOriginal;
+   SignUpPage(String[] usernames, String[] passwords){
 
+	this.usernames = usernames;
+	this.passwords = passwords;
+
+	//BufferedWriter writer = new BufferedWriter(new FileWriter("myFile.txt", false));
 
    	JFrame frame = new JFrame();//creates the frame of my application
    	frame.setTitle("Sing up to Door2Door"); //sets title of my frame
@@ -76,14 +82,49 @@ public class SignUpPage implements ActionListener{
    	frame.setIconImage(logoImage.getImage());
 	}
 
+	/*public void setCount() {
+		count++;
+	}
+	public void setUsernames() {
+			count++;
+	}
+	public void setCount() {
+			count++;
+	}
+*/
+	public String getUsername() {
+		return username;
+	}
+	public String getPassword() {
+		return password;
+	}
+
    @Override
 		public void actionPerformed(ActionEvent e) {
-   		if(e.getSource()==SignUpButton){
-   			 this.username = userIDField.getText();
-   			 this.password = String.valueOf(userPasswordField.getPassword());//I am at password field thats why im using valueOf
-				System.out.println("works");
-				messageLabel.setText("Sign up successful");
+   		if(e.getSource()==SignUpButton) {
+   			this.username = userIDField.getText();
+   			this.password = String.valueOf(userPasswordField.getPassword());//I am at password field thats why im using valueOf
+   			usernames[count] = getUsername();
+   			System.out.println(usernames[count]);
+			passwords[count] = getPassword();
+			count++;
+			try {
+				PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
+				writer.println("The first line");
+				writer.println("The second line");
+				writer.close();
+			} catch (IOException a) {
+				System.out.println("An error has occured");
+			}
+			//writer.write(usernames[count].toString());
+            //writer.newLine();
+			//writer.write(passwords[count].toString());
+            //writer.newLine();
+			//setCount();
+			System.out.println("works");
+			messageLabel.setText("Sign up successful");
  				//will transfer to my welcome page
+ 				//WelcomePage welcome = new WelcomePage();
 			}
 			if(e.getSource()==ResetButton){
 			   	userIDField.setText("");
@@ -92,8 +133,12 @@ public class SignUpPage implements ActionListener{
 					messageLabel.setText("Reset successful");
 			 		//will transfer to my welcome page
 			}
-
+			for (int i = 0; i <= count; i++) {
+			System.out.println(usernames[count]);
+		}
+		//writer.close();
+		//writer.flush();
+      	System.out.println("Data Entered in to the file successfully");
 	}
-	//signUp.setSignUp(username, password);
 }
 

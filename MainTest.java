@@ -1,7 +1,12 @@
-public class MainTest extends Action{
 
-	public static void main (String args[]){
+public class MainTest {
 
-		Action act = new Action();
+	public static void main(String args[]) {
+		String users[] = {"Anna" , "elena", "ioanna", "Mary", "Luke", "berry"};
+		SearchBar searchbar = new SearchBar(users);
 	}
 }
+
+
+
+
