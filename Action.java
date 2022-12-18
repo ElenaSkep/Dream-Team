@@ -2,12 +2,19 @@ import java.awt.*;
 import java.awt.Component;
 import java.lang.Object;
 import java.lang.System;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 public class Action implements ActionListener{
+
+
+	String[] usernames = new String[5000];
+	String[] passwords = new String[5000];
 
 	JFrame frame = new JFrame();
 
@@ -40,21 +47,16 @@ public class Action implements ActionListener{
 		messageLabel.setBounds(125,250,250,35);
     	frame.add(messageLabel);
 }
-   		@Override
+
+   	@Override
 			public void actionPerformed(ActionEvent e) {
-		   		if(e.getSource()==SignUpButton){
-                    System.out.println(a);
+		   		if(e.getSource() == SignUpButton){
 					messageLabel.setText("You will proceed to sign up");
-					String name = "";
-		        	String password = "";
-					IDandPasswords iDandPasswords = new IDandPasswords(name, password);
-					SignUpPage signUpPage = new SignUpPage();
+					SignUpPage signUpPage = new SignUpPage(usernames, passwords);
 				}
 				if (e.getSource() == LoginButton) {
 					messageLabel.setText("You will proceed to log in");
-					IDandPasswords iDandPasswords = new IDandPasswords();
-				    iDandPasswords.getLoginInfo();//makes subject to bring my hash map at the main class
-			        LoginPage loginPage = new LoginPage(iDandPasswords.getLoginInfo());
+			        LoginPage loginPage = new LoginPage(usernames, passwords);
 			    }
 
        	}
