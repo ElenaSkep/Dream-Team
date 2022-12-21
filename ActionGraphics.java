@@ -7,17 +7,18 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-public class Action implements ActionListener{
 
-	JFrame frame = new JFrame();
+public abstract class ActionGraphics implements ActionListener {
+
+JFrame frame = new JFrame();
 
 	JButton SignUpButton;
 	JButton LoginButton;
 	JLabel messageLabel;
 
 	//constructor
-	Action(){
-		JFrame frame = new JFrame();//creates the frame of my application
+	ActionGraphics(){
+    JFrame frame = new JFrame();//creates the frame of my application
    		frame.setTitle("Sing up or login to Door2Door"); //sets title of my frame
 
    		SignUpButton = new JButton("Sign Up");
@@ -42,25 +43,6 @@ public class Action implements ActionListener{
 		messageLabel.setBounds(115,240,240,120);
 	    frame.add(messageLabel);
 
-
-}
-   		@Override
-			public void actionPerformed(ActionEvent e) {
-		   		if(e.getSource()==SignUpButton){
-                    System.out.println(e);
-					messageLabel.setText("You will proceed to sign up");
-					String name = "";
-		        	String password = "";
-					IDandPasswords iDandPasswords = new IDandPasswords();
-					SignUpPage signUpPage = new SignUpPage();
-				}
-				if (e.getSource() == LoginButton) {
-					messageLabel.setText("You will proceed to log in");
-					IDandPasswords iDandPasswords = new IDandPasswords();
-				    iDandPasswords.getLoginInfo();//makes subject to bring my hash map at the main class
-			        LoginPage loginPage = new LoginPage(iDandPasswords.getLoginInfo());
-			    }
-
-       	}
-
 	}
+}
+
