@@ -13,8 +13,6 @@ public class SignUpPage implements ActionListener {
 	
 
 
-	
-
 	    JFrame frame = new JFrame();
 		JLabel userIDLabel;
 		JLabel userPasswordLabel;
@@ -23,7 +21,7 @@ public class SignUpPage implements ActionListener {
 		JButton SignUpButton;
 		JButton ResetButton;
 		JLabel messageLabel;
-
+		int a;
 		Connection con = null;//SQL VARIABLES
 		PreparedStatement pst3 = null;//SQL VARIABLES
 		ResultSet rs3 = null;//SQL VARIABLES
@@ -101,19 +99,47 @@ public class SignUpPage implements ActionListener {
 					
 					pst3 = con.prepareStatement(sql); //remember: [PreparedStatement pst3 = null;] at first lines
 					
-					pst3.setString(1,userIDField.getText());
-					
-					pst3.setString(2,String.valueOf(userPasswordField.getPassword()));
-					
-                    statement.executeUpdate(sql);
-				
-					
-					
-					pst3.execute();
+					//boolean flag=false;
 					
 					
 					
-					messageLabel.setText("Sign up successful");
+					//while (flag==false) {
+					
+						
+						if (userIDField.getText().isEmpty()==true||String. valueOf(userPasswordField.getPassword()).isEmpty()== true ) {
+						
+							//messageLabel.setText("Please enter username & password");
+							
+							//Thread.sleep(1000);
+							
+							 SignUpPage s2 = new SignUpPage();
+							//userIDField.getText();
+							//userPasswordField.getPassword();
+							//SignUpButton.setText(userIDField.getText());
+							//SignUpButton.setText(String.valueOf(userPasswordField.getPassword()));
+					        
+					     
+							
+						}else {
+						//	flag=true;
+						pst3.setString(1,userIDField.getText());
+						
+						pst3.setString(2,String.valueOf(userPasswordField.getPassword()));
+
+	                    statement.executeUpdate(sql);
+					
+						
+						
+						pst3.execute();
+						a=1;
+						messageLabel.setText("Sign up successful");
+						
+						}
+						
+					//}
+					
+					
+					
 	 			//will transfer to my welcome page
 				}catch(Exception e2){
 					System.out.println("registration failed" + e2);
@@ -130,16 +156,23 @@ public class SignUpPage implements ActionListener {
 					}
 				}
 			
-			if(e.getSource()==ResetButton){
+	   		} else if(e.getSource()==ResetButton){
+				System.out.println("works");
 				userIDField.setText("");
 				userPasswordField.setText("");
-				System.out.println("works");
+			
 				messageLabel.setText("Reset successful");
 				//will transfer to my welcome page
 			}
 
-	   		}
+	   		
 	}
+	   
+	   public int getA() {
+		 
+		   return a;
+	   }
+
 }
 
 
