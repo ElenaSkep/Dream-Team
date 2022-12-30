@@ -48,7 +48,7 @@ public class SearchBarGraphics implements ActionListener {
 	frame.setVisible(true);
 	frame.getContentPane().setBackground(new Color(204, 204, 204)); //change color of background
 
-	ImageIcon logoImage = new ImageIcon("logo.png");
+	ImageIcon logoImage = new ImageIcon("door2doorlogo.jpg");
 	frame.setIconImage(logoImage.getImage());
 }
 
