@@ -2,7 +2,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.lang.System;
-import java.util.HashMap;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
