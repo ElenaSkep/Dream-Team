@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 
 
 
-class WelcomePage extends JFrame
+class WelcomePage extends JFrame implements ActionListener
 {
 JButton b1;
 //JLabel l1;//
