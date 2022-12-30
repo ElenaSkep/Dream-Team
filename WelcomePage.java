@@ -29,7 +29,7 @@ JFrame frame = new JFrame();//creates the frame of my application
 	setVisible(true);
     frame.getContentPane().setBackground(new Color(0,102,0)); //change color of background
 	setLayout(new BorderLayout());
-	setContentPane(new JLabel(new ImageIcon("C:\\Users\\evely\\Documents\\door2doorlogo.jpg")));
+	setContentPane(new JLabel(new ImageIcon("door2doorlogo.jpg")));
 	setLayout(new FlowLayout());
 	//l1=new JLabel("Join now");//
 	b1=new JButton("Search bar");
