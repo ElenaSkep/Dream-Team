@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 class WelcomePage extends JFrame implements ActionListener
 {
 JButton b1;
-//JLabel l1;//
+JLabel l1;
 JFrame frame = new JFrame();//creates the frame of my application
 	public WelcomePage()
 	{
@@ -45,8 +45,9 @@ JFrame frame = new JFrame();//creates the frame of my application
 
     public void actionPerformed(ActionEvent e) {
 			 if(e.getSource() == b1){
-			   //l1.setText("Welcome to Door2Door");//
-			SearchBar k = new SearchBar();
+			 l1.setText("Welcome to Door2Door");
+			 System.out.println(e);  
+			 SearchBar k = new SearchBar();
 				}
 			}
 	}
