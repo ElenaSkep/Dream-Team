@@ -19,19 +19,15 @@ public class Action implements ActionListener{
     }
     @Override
 			public void actionPerformed(ActionEvent e) {
-		   		if(e.getSource()==SignUpButton){
-                    System.out.println(e);
+		   		if(e.getSource()==SignUpButton)
 					messageLabel.setText("You will proceed to sign up");
-					String name = "";
-		        	String password = "";
-					IDandPasswords iDandPasswords = new IDandPasswords();
 					SignUpPage signUpPage = new SignUpPage();
 				}
 				if (e.getSource() == LoginButton) {
-					messageLabel.setText("You will proceed to log in");
-					IDandPasswords iDandPasswords = new IDandPasswords();
-				    iDandPasswords.getLoginInfo();//makes subject to bring my hash map at the main class
-			        LoginPage loginPage = new LoginPage(iDandPasswords.getLoginInfo());
+		                    messageLabel.setText("You will proceed to log in");
+			            LoginPage loginPage = new LoginPage();
+				    loginPage.actionPerformed(e);
+			            System.out.println("just pressed login");
 			    }
 
        	}
