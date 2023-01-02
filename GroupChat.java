@@ -1,3 +1,7 @@
+package d2d;
+
+import java.util.Scanner;
+import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -5,8 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.swing.JFrame;
 import java.awt.TextField;
@@ -17,6 +19,7 @@ import java.awt.event.*;
 
 public class GroupChat implements ActionListener {
 	
+	ArrayList<String> chat= new ArrayList<>();
 
 	    JFrame frame = new JFrame();
 		JLabel sendMessage;
@@ -26,12 +29,13 @@ public class GroupChat implements ActionListener {
 		String message;
 		Connection connection = null ;
 		PreparedStatement pst3 = null;
-		String datetime;
+		public String myuser;
 
-    public GroupChat() {
-    	Sqlite3.connectiontrial3();
+    public GroupChat(String myuser) {
+    	this.myuser=myuser;
+    
 		JFrame frame = new JFrame();
-		frame.setTitle("GroupChat of Door2Door");
+		frame.setTitle("Send a message to Door2Door");
 
 		sendMessage = new JLabel ("message:");
 		sendMessage.setBounds(50,100,75,25);
@@ -61,8 +65,9 @@ public class GroupChat implements ActionListener {
 
 	public void actionPerformed(ActionEvent e){
 		
-		 System.out.println("about to connect for the groupchat");
-
+		 System.out.println(myuser);
+     //    Login l = new Login();
+     //  System.out.println(  l.getmyuser());
 
 		if(e.getSource()==messageButton){
 
@@ -74,22 +79,26 @@ public class GroupChat implements ActionListener {
 			        connection = DriverManager.getConnection("jdbc:sqlite:src/main/resources/mydb.db");
 			        Statement statement = connection.createStatement();
 			        System.out.println("before writing the query");
-					String sql=("INSERT INTO groupmessages VALUES (?,?,?);");
-					System.out.println("after writing the query");
-					pst3 = connection.prepareStatement(sql);
-					System.out.println("after prep statement");
+					String sql=("INSERT INTO groupmess VALUES (?,?,?);");
 					
-					SimpleDateFormat formatter = new SimpleDateFormat(" HH:mm"+ " " +"(dd-MM-YYYY)");
-				    Date date = new Date(System.currentTimeMillis());
-				  //  System.out.println(formatter.format(date));
-					datetime= date.toString();
-				    
-					pst3.setString(1,"its me");
-					pst3.setString(2,message);
-					pst3.setString(3,datetime);
-					System.out.println("before executing the query");
+					pst3 = connection.prepareStatement(sql);
+					
+					
+					pst3.setString(1,message);
+					pst3.setString(2,myuser);
+					pst3.setString(3,"2022-12-12 7:20:01");
+					
                    statement.executeUpdate(sql);
 				   pst3.execute();
+
+					 Statement statement2 = connection.createStatement();
+					 ResultSet resultset = statement2.executeQuery("SELECT * FROM groupmess  WHERE message<>'null'");
+
+					 while (resultset.next()) {
+
+					 System.out.println(resultset.getString("message")+ ":" + resultset.getString("fromid")) ;
+
+					 }
 					
 				}catch(Exception e5){
 					System.out.println("man you cant do this because of" + e5);
@@ -106,17 +115,24 @@ public class GroupChat implements ActionListener {
 						
 					}
 				}
-			
+				
 		}
 
 		
-		
 	}
-	
-	
-	
-	
 
-    
+    /*public void sendMessage() {
+		sc = new Scanner(System.in);
+		//get username with sql or with another systemin
+		String x= "username" + sc.nextLine();
+		chat.add(x);
+	}
+	 public void receiveMessage() {
+		 for (int i=0; i<chat.size(); i++) {
+			 System.out.println(chat.get(i));
+		 }
+	 } */
 }
+
+
 
