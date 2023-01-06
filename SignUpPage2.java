@@ -16,7 +16,9 @@ public class SignUpPage2 implements ActionListener {
 	    JFrame frame = new JFrame();
 		JLabel userIDLabel;
 		JLabel userPasswordLabel;
+		JLabel areacodeLabel;
 		JTextField userIDField;
+		JTextField areacodeField;
 		JPasswordField userPasswordField;
 		JButton SignUpButton;
 		JButton ResetButton;
@@ -40,6 +42,10 @@ public class SignUpPage2 implements ActionListener {
 	   	userPasswordLabel = new JLabel ("Password:");
 	   	userPasswordLabel.setBounds(50,150,75,25);
 	   	frame.add(userPasswordLabel);
+	   	
+	   	areacodeLabel = new JLabel ("area code:");
+		areacodeLabel.setBounds(50,200,75,25);
+		frame.add(areacodeLabel);
 
 	   	userIDField = new JTextField();
 	   	userIDField.setBounds(125,100,200,25);
@@ -48,21 +54,25 @@ public class SignUpPage2 implements ActionListener {
 	   	userPasswordField = new JPasswordField();
 	   	userPasswordField.setBounds(125,150,200,25);
 	   	frame.add(userPasswordField);
+	   	
+	   	areacodeField = new JTextField();
+		areacodeField.setBounds(125,200,200,25);
+		frame.add(areacodeField);
 
 	   	SignUpButton = new JButton("Sign Up");
-	   	SignUpButton.setBounds(125,200,100,25);
+	   	SignUpButton.setBounds(125,250,100,25);
 	   	SignUpButton.setFocusable(false);
 	   	SignUpButton.addActionListener(this);
 	   	frame.add(SignUpButton);
 
 	   	ResetButton = new JButton("Reset Up");
-		ResetButton.setBounds(225,200,100,25);
+		ResetButton.setBounds(225,250,100,25);
 		ResetButton.setFocusable(false);
 		ResetButton.addActionListener(this);
 	   	frame.add(ResetButton);
 
 	   	messageLabel = new JLabel("The text about the access will appear here");//message that show if login was successful
-	   	messageLabel.setBounds(125,250,250,35);
+	   	messageLabel.setBounds(125,300,250,35);
 	   	frame.add(messageLabel);
 
 	   	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit from application
@@ -83,7 +93,7 @@ public class SignUpPage2 implements ActionListener {
 	   		if(e.getSource()==SignUpButton){
 				try{
 					 //Sqlite2.connectiontrial2(); // makes the connection WITH MY DB IN SQL
-					String sql = "INSERT INTO users VALUES (?,?);";
+					String sql = "INSERT INTO users VALUES (?,?,?);";
 					
 					
 					
@@ -128,6 +138,7 @@ public class SignUpPage2 implements ActionListener {
 						pst3.setString(1,name);
 						
 						pst3.setString(2,String.valueOf(userPasswordField.getPassword()));
+						pst3.setString(3,areacodeField.getText());
 
 	                    statement.executeUpdate(sql);
 					
