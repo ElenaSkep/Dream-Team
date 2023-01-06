@@ -48,7 +48,7 @@ public class Login {
 			messageLabel = m;
 		}
 
-		public void try1() {
+		public void loginmethod() {
 			try{
 			 System.out.println("works");
 			//Sqlite2.connectiontrial2(); // makes the connection WITH MY DB IN SQL
