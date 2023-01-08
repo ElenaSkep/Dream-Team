@@ -63,7 +63,7 @@ public class LoginGui extends JFrame {
 		frame.setSize(420,420);//sets the x-dimension, and y-dimension of application
 		frame.setLayout(null);
 		frame.setVisible(true);
-		frame.getContentPane().setBackground(new Color(50,180,0)); //change color of background
+		frame.getContentPane().setBackground(new Color(204,204,204)); //change color of background
 
 		Login login = new Login(this,userIDField, userPasswordField,messageLabel);
 
