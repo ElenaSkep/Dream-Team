@@ -1,5 +1,3 @@
-package Door2Door;
-
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,26 +12,34 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
-public class GroupChat implements ActionListener {
+public class GroupChat {
 
 	    JFrame frame = new JFrame();
 		JLabel sendMessage;
 		JTextField messageField;
 		JButton messageButton;
 		JLabel messageLabel;
+		GroupChatGraphics gui;
 		String message;
 		Connection connection = null ;
 		PreparedStatement pst3 = null;
 		public String myuser;
+		public String areacode;
 
-    public GroupChat(String myuser) {
+	 public GroupChat(GroupChatGraphics parentGui,JTextField userID,JLabel m,String myuser,String areacode){
+				gui = parentGui;
+				messageField = userID;
+				messageLabel = m;
 
     	this.myuser=myuser;
+    	this.areacode=areacode;
+    
     	try {
-    		GroupChatMessages rec = new GroupChatMessages();
+    		GroupChatMessages rec = new GroupChatMessages(areacode);
 	        rec.showMessages();
 
 		}catch(Exception s) {
+			System.out.println("exception"+ s);
 		}finally {
 			try {
 				if(connection != null)
@@ -46,40 +52,10 @@ public class GroupChat implements ActionListener {
 			}
 
 		}
-
-        JFrame frame = new JFrame();
-		frame.setTitle("Send a message to Door2Door");
-
-		sendMessage = new JLabel ("message:");
-		sendMessage.setBounds(50,100,75,25);
-		frame.add(sendMessage);
-
-		messageButton = new JButton("Message");
-		messageButton.setBounds(125,200,100,25);
-		messageButton.addActionListener(this);
-		frame.add(messageButton);
-
-		messageLabel = new JLabel("The text about the access will appear here");
-		messageLabel.setBounds(115,240,240,120);
-		frame.add(messageLabel);
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit from application
-		frame.setSize(420,420);//sets the x-dimension, and y-dimension of application
-		frame.setLayout(null);
-		frame.setVisible(true);
-		frame.getContentPane().setBackground(new Color(0,102,0));
-
-		messageField = new JTextField();
-	    messageField.setBounds(125,100,200,25);
-	   	frame.add(messageField);
+}
 
 
-	}
-
-	public void actionPerformed(ActionEvent e){
-
-
-			if(e.getSource()==messageButton){
+	public void groupchatmethod() {
 
 				message = messageField.getText();
 
@@ -103,7 +79,7 @@ public class GroupChat implements ActionListener {
 					pst3.setString(1,myuser);
 					pst3.setString(2,message);
 					pst3.setString(3,datetime);
-					pst3.setString(4,"11254");
+					pst3.setString(4,areacode);
                    statement.executeUpdate(sql);
 				   pst3.execute();
                    System.out.println("success");
@@ -126,9 +102,5 @@ public class GroupChat implements ActionListener {
 
 		}
 
-
 	}
-
-
-}
 
