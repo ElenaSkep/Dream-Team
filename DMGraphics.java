@@ -19,12 +19,13 @@ public class DMGraphics extends JFrame{
 	JTextField messageField;
 	JButton SearchButton;
 	JLabel messageLabel;
+	String myuser;
 	private static final long serialVersionUID = 1L;
 
 
 
-	DMGraphics() {
-	
+	DMGraphics(String myuser) {
+	 this.myuser=myuser;
 	JFrame frame = new JFrame();
 	
 	frame.setTitle("Send a DM ");
@@ -61,7 +62,7 @@ public class DMGraphics extends JFrame{
 	  frame.getContentPane().setBackground(new Color(50,180,0)); //change color of background
 	  
 
-	   Dm a = new Dm(this,userIDField,messageField,messageLabel);
+	   Dm a = new Dm(this,userIDField,messageField,messageLabel,myuser);
 	 
 	   SendButton.addActionListener(new ActionListener() {
 			public  void actionPerformed(ActionEvent e){

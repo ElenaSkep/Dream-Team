@@ -37,11 +37,12 @@ public class Dm {
 	    DMGraphics gui;
 
 
-	    public Dm(DMGraphics parentGui, JTextField userID,JTextField message ,JLabel m){ //CONSTRACTOR
+	    public Dm(DMGraphics parentGui, JTextField userID,JTextField message ,JLabel m,String myuser){ //CONSTRACTOR
 					gui = parentGui;
 					messageField = message;
 					userIDField =userID ;
 					messageLabel=m;
+					this.myuser=myuser;
 			}
 
 
@@ -59,7 +60,7 @@ public class Dm {
 	try {
 	Class.forName("org.sqlite.JDBC");
 	} catch (ClassNotFoundException e1) {
-	/
+	
 	e1.printStackTrace();
 	}
 	Connection con = DriverManager.getConnection("jdbc:sqlite:src/main/resources/mydb.db");
@@ -84,7 +85,7 @@ public class Dm {
 	      // System.out.println( con != null && !con.isClosed());
 	       pst32=con.prepareStatement(sql121);
 
-	       pst32.setString(1,myuser); //log.myuser
+	       pst32.setString(1,myuser); 
 	   pst32.setString(2,username1);
 	   pst32.setString(3,message);
 
