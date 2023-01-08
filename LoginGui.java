@@ -1,5 +1,3 @@
-//package Door2Door;
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -63,9 +61,9 @@ public class LoginGui extends JFrame {
 		frame.setSize(420,420);//sets the x-dimension, and y-dimension of application
 		frame.setLayout(null);
 		frame.setVisible(true);
-		frame.getContentPane().setBackground(new Color(204,204,204)); //change color of background
+		frame.getContentPane().setBackground(new Color(50,180,0)); //change color of background
 
-		Login login = new Login(this,userIDField, userPasswordField,messageLabel);
+		Login login = new Login(this,userIDField, userPasswordField,messageLabel,PostalCodeField);
 
 		loginButton = new JButton("Login");
 		loginButton.setBounds(125,300,100,25);
@@ -77,8 +75,8 @@ public class LoginGui extends JFrame {
 			}); //I wanted a subject of type Actionlistener
 		frame.add(loginButton);
 
-		ImageIcon logoImage = new ImageIcon("door2doorlogo.jpg");
-		frame.setIconImage(logoImage.getImage());
+		//ImageIcon logoImage = new ImageIcon("door2doorlogo.jpg");
+		//frame.setIconImage(logoImage.getImage());
 
 	}
 

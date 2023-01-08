@@ -1,5 +1,3 @@
-//package Door2Door;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,7 +25,7 @@ public class Login {
 		JLabel PostalCodeLabel;
 		JTextField userIDField;
 		JPasswordField userPasswordField;
-		JTextField PostalCodeField;
+		JTextField areacode;
 		JButton loginButton;
 		JLabel messageLabel;
 
@@ -38,14 +36,16 @@ public class Login {
 		PreparedStatement pst2 = null;//SQL
 		ResultSet rs1 = null;//SQL
 		ResultSet rs2 = null;//SQL
-		String tk;
+		String areacode1;
 		int a;
+		
 
-		public Login (LoginGui parentGui, JTextField userID,JPasswordField code, JLabel m){ //CONSTRACTOR
+		public Login (LoginGui parentGui, JTextField userID,JPasswordField code, JLabel m, JTextField areacode){ //CONSTRACTOR
 			gui = parentGui;
 			userIDField = userID;
 			userPasswordField = code;
 			messageLabel = m;
+			this.areacode=areacode;
 		}
 
 		public void loginmethod() {
@@ -53,7 +53,7 @@ public class Login {
 			 System.out.println("works");
 			//Sqlite2.connectiontrial2(); // makes the connection WITH MY DB IN SQL
 			String sql1 = "SELECT * from users WHERE USERNAME = ? ; ";
-			String sql2 = "SELECT * from users WHERE USERNAME = ? AND PASSWORD = ?;";
+			String sql2 = "SELECT * from users WHERE USERNAME = ? AND PASSWORD = ?; AND AREA_CODE = ?;";
 			con = DriverManager.getConnection("jdbc:sqlite:src/main/resources/mydb.db");
 
 			pst1 = con.prepareStatement(sql1);
@@ -63,25 +63,22 @@ public class Login {
 			    if (rs1.next()) { //ID EXISTS
 
 			    myuser=userIDField.getText();
+			    areacode1= areacode.getText();
 				pst2 = con.prepareStatement(sql2);
 				pst2.setString(1,userIDField.getText()); //userIDField.getText()
 				myuser=userIDField.getText();
 				pst2.setString(2,String.valueOf(userPasswordField.getPassword()));
+				//pst2.setString(3,areacode.getText());
 				rs2 = pst2.executeQuery();
 
 				   if (rs2.next()) {//PASSWORD IS CORRECT
 
 				    System.out.println("checking password");
 					messageLabel.setText("Login successful");
-					System.out.println("1:Groupchat 2:DM");
-					Scanner scanner = new Scanner(System.in);
-					String answer=scanner.nextLine();
-
-					if (answer=="1") {
-				        GroupChat2 chat = new GroupChat2(myuser);
-					}else{
-						SearchBar2 s =new SearchBar2(myuser);
-				    }
+					
+				  
+					WelcomePage w= new WelcomePage(myuser,areacode1);
+				   
 
 					if (con != null) {
 					    con.close();
@@ -110,5 +107,3 @@ public class Login {
 			}
 		}
 	}
-
-
