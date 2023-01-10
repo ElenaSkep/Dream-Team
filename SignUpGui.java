@@ -1,6 +1,10 @@
+package Door2Door;
+
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener; 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,9 +14,9 @@ import javax.swing.JTextField;
 public class SignUpGui extends JFrame{
 
 	SignUp signup;
-	JFrame frame = new JFrame();
 	String userID;
 	String code;
+	JFrame frame;
 	JLabel userIDLabel;
 	JLabel areacodeLabel;
 	JLabel userPasswordLabel;
@@ -26,7 +30,7 @@ public class SignUpGui extends JFrame{
 	private static final long serialVersionUID = 1L;
 
 	SignUpGui(){
-		JFrame frame = new JFrame();//creates the frame of my application
+		frame = new JFrame();//creates the frame of my application
 		frame.setTitle("Sing up to Door2Door"); //sets title of my frame
 		
 	
@@ -71,7 +75,12 @@ public class SignUpGui extends JFrame{
 		SignUpButton.setFocusable(false);
 		SignUpButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				signup.signUp1();
+				boolean flag = signup.signUp1();
+				System.out.println(flag);
+				if (flag==true) {
+					frame.dispose();
+					System.out.println(flag);
+				}
 				}
 			});
    		frame.add(SignUpButton);
@@ -86,6 +95,8 @@ public class SignUpGui extends JFrame{
 					}
 				});
    		frame.add(ResetButton);
-	}
-	
+   		
+	}   
+        
 }
+
