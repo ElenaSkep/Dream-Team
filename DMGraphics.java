@@ -9,10 +9,13 @@ import java.sql.Statement;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 import javax.swing.*;
 
 public class DMGraphics extends JFrame{
 	JButton SendButton;
+	JButton b1;
 	JFrame frame = new JFrame();
 	JLabel userIDLabel;
 	JTextField userIDField;
@@ -27,7 +30,12 @@ public class DMGraphics extends JFrame{
 	DMGraphics(String myuser) {
 	 this.myuser=myuser;
 	JFrame frame = new JFrame();
-	
+
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit from application
+	frame.setSize(420,420);//sets the x-dimension, and y-dimension of application
+    frame.setLayout(null);
+	frame.getContentPane().setBackground(new Color(204,204,204)); //change color of background
+
 	frame.setTitle("Send a DM ");
 	userIDLabel = new JLabel ("To:");
 	  userIDLabel.setBounds(50,100,75,25);//x,y,w,height
@@ -45,25 +53,24 @@ public class DMGraphics extends JFrame{
 	  messageField.setBounds(125,150,200,25);
 	  frame.add(messageField);
 
-		SendButton = new JButton("Send");
-	   	SendButton.setBounds(125,200,100,25);
-	   	
-	   	frame.add(SendButton);
-
-
-	messageLabel = new JLabel("The text about the access will appear here");//message that show if login was successful
+	  messageLabel = new JLabel("The text about the access will appear here");//message that show if login was successful
 	  messageLabel.setBounds(125,250,250,35);
 	  frame.add(messageLabel);
-	 
-	  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit from application
-	  frame.setSize(420,420);//sets the x-dimension, and y-dimension of application
-	  frame.setLayout(null);
-	  frame.setVisible(true);
-	  frame.getContentPane().setBackground(new Color(50,180,0)); //change color of background
-	  
 
-	   Dm a = new Dm(this,userIDField,messageField,messageLabel,myuser);
-	 
+	  SendButton = new JButton("Send");
+	  SendButton.setBounds(125,200,100,25);
+	  frame.add(SendButton);
+
+
+	  messageLabel = new JLabel("The text about the access will appear here");//message that show if login was successful
+	  messageLabel.setBounds(125,250,250,35);
+	  frame.add(messageLabel);
+
+	  frame.setVisible(true);
+
+
+	  Dm a = new Dm(this,userIDField,messageField,messageLabel,myuser);
+
 	   SendButton.addActionListener(new ActionListener() {
 			public  void actionPerformed(ActionEvent e){
 				a.try1();
@@ -71,13 +78,27 @@ public class DMGraphics extends JFrame{
 			});
   		frame.add(SendButton);
 
+  		frame.setLayout(new BorderLayout());
+
+	  b1 = new JButton("Back");
+	  b1.setBounds(125,200,100,25);
+      frame.add(b1, BorderLayout.SOUTH);
+
+  		b1.addActionListener(new ActionListener() {
+				  public  void actionPerformed(ActionEvent e){
+					  dispose();
+					  System.out.println(e);
+					  WelcomePagewith3button k = new WelcomePagewith3button(myuser);
+				  }
+	  } );
+	  frame.add(b1, BorderLayout.SOUTH);
+
 			ImageIcon logoImage = new ImageIcon("door2doorlogo.jpg");
 			frame.setIconImage(logoImage.getImage());
 
 
 	}
 	}
-
 
 
 
