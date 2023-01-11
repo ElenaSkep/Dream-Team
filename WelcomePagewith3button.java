@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;//javax.swing.JFrame + javax.swing.JButton + javax.swing.JTextField + javax.swing.JLabel;
 import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -28,8 +29,10 @@ Statement stmt=null;
 JButton b1;
 JButton b2;
 JButton b3;
+JButton b4;
 JFrame frame = new JFrame();//creates the frame of my application
 String myuser;
+String areacode;
 
 public WelcomePagewith3button(String myuser)
 {
@@ -42,8 +45,8 @@ setVisible(true);
     frame.getContentPane().setBackground(new Color(204,204,204)); //change color of background
 setLayout(new BorderLayout());
 setContentPane(new JLabel(new ImageIcon("door2doorlogo.jpg")));
-setLayout(new FlowLayout());
 
+setLayout(new FlowLayout());
 b1=new JButton("One2One");
 b1.addActionListener(this);
 b2 = new JButton("GroupChat");
@@ -54,6 +57,11 @@ add(b1);
 add(b2);
 add(b3);
 
+
+b4 = new JButton("LogOut");
+b4.addActionListener(this);
+add(b4);
+
 ImageIcon logoImage = new ImageIcon("door2doorlogo.jpg");
 frame.setIconImage(logoImage.getImage());
 setVisible(true);
@@ -62,13 +70,19 @@ setVisible(true);
 
 
 public void actionPerformed(ActionEvent e) {
-if(e.getSource() == b1){
+if (e.getSource() == b4) {
+	dispose();
+	System.out.println(e);
+	Action k = new Action();
+} else if (e.getSource() == b1){
+	dispose();
     System.out.println(e);
    //Login obj=new Login();
-    Dm obj=new Dm(myuser);
+    DMGraphics obj=new DMGraphics(myuser);
 } else if(e.getSource() == b2) {
+dispose();
 System.out.println(e);
-GroupChat2 k = new GroupChat2(myuser);
+GroupChatGraphics k = new GroupChatGraphics(myuser,areacode);
 }else  if(e.getSource() == b3){
 	try{
 		//String sql12 = "SELECT fromuser,save from messagesonetoone WHERE touser =  "+myuser;
@@ -82,7 +96,7 @@ GroupChat2 k = new GroupChat2(myuser);
 		while (rs3.next()) {
 			System.out.println( rs3.getString("fromuser")
            		 + ": "+ rs3.getString("save") ) ;
-			
+
 		}
 		stmt.close();
 		con54.close();
@@ -90,16 +104,16 @@ GroupChat2 k = new GroupChat2(myuser);
 		System.out.println(e1);
 	}finally {
 		try {
-			
-			if(con54!= null) 
+
+			if(con54!= null)
 				con54.close();
 			  //pst2.close();
 			  //pst19.close();
-			 
-	
+
+
 		}catch ( SQLException e3) {
 			e3.printStackTrace();
-			
+
 		}
 }
 }
