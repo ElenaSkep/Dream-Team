@@ -1,3 +1,5 @@
+package Door2Door;
+
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,22 +26,18 @@ public class GroupChat {
 		Connection connection = null ;
 		PreparedStatement pst3 = null;
 		public String myuser;
-		public String areacode;
 
-	 public GroupChat(GroupChatGraphics parentGui,JTextField userID,JLabel m,String myuser,String areacode){
-				gui = parentGui;
-				messageField = userID;
-				messageLabel = m;
-
-    	this.myuser=myuser;
-    	this.areacode=areacode;
-    
+	 public GroupChat(GroupChatGraphics parentGui,JTextField userID,JLabel m){
+			gui = parentGui;
+			messageField = userID;
+			messageLabel = m;
+			this.myuser=myuser;
+			
     	try {
-    		GroupChatMessages rec = new GroupChatMessages(areacode);
+    		GroupChatMessages rec = new GroupChatMessages();
 	        rec.showMessages();
 
 		}catch(Exception s) {
-			System.out.println("exception"+ s);
 		}finally {
 			try {
 				if(connection != null)
@@ -79,7 +77,7 @@ public class GroupChat {
 					pst3.setString(1,myuser);
 					pst3.setString(2,message);
 					pst3.setString(3,datetime);
-					pst3.setString(4,areacode);
+					pst3.setString(4,"11254");
                    statement.executeUpdate(sql);
 				   pst3.execute();
                    System.out.println("success");
@@ -101,6 +99,4 @@ public class GroupChat {
 				}
 
 		}
-
-	}
-
+}

@@ -1,4 +1,4 @@
-package connection2;
+package Door2Door;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,7 +22,7 @@ public class Sqlite2 {
         connection = DriverManager.getConnection("jdbc:sqlite:src/main/resources/mydb.db");
 			
 	Statement statement = connection.createStatement();
-		ResultSet resultset = statement.executeQuery("SELECT * FROM onlygroupmes");
+		ResultSet resultset = statement.executeQuery("SELECT * FROM users");
 		
 		while (resultset.next()) {
 			
@@ -46,3 +46,4 @@ public class Sqlite2 {
  }
 
 }
+

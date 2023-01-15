@@ -1,85 +1,98 @@
+package Door2Door;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.*;
+
+/**
+* LoginGui contains graphics for class Login.
+* The classes LoginGui and Login communicate without interfering with each other 
+*/
 
 public class LoginGui extends JFrame {
 
-	Login login;
-	JFrame frame = new JFrame();
-	JLabel userIDLabel;
-	JLabel userPasswordLabel;
-	JLabel PostalCodeLabel;
-	JTextField userIDField;
-	JPasswordField userPasswordField;
-	JTextField PostalCodeField;
-	JButton loginButton;
-	JLabel messageLabel;
-	String code;
+  Login login;
+  JFrame frame;
+  JLabel userIdlabel;
+  JLabel userPasswordLabel;
+  JLabel postalCodeLabel;
+  JTextField userIdfield;
+  JPasswordField userPasswordField;
+  JTextField postalCodeField;
+  JButton loginButton;
+  JLabel messageLabel;
+  String code;
+  boolean xx;  
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
+  
+  /**
+   * Class's LoginGui constructor.
+   */
+  
+  LoginGui() {
+    frame = new JFrame(); //creates the frame of my application
+    frame.setTitle("Log-in to Door2Door"); //sets title of my frame
+    
+    ImageIcon image = new ImageIcon(getClass().getResource("/door2doorlogo2.png"));
+    frame.setIconImage(image.getImage());
 
-	LoginGui() {
+    userIdlabel = new JLabel("userID:");
+    userIdlabel.setBounds(50, 100, 75, 25);
+    frame.add(userIdlabel);
 
-		JFrame frame = new JFrame();//creates the frame of my application
-		frame.setTitle("Log-in to Door2Door"); //sets title of my frame
+    userPasswordLabel = new JLabel("password:");
+    userPasswordLabel.setBounds(50, 150, 75, 25);
+    frame.add(userPasswordLabel);
 
-		userIDLabel = new JLabel ("userID:");
-		userIDLabel.setBounds(50,100,75,25);
-		frame.add(userIDLabel);
+    postalCodeLabel = new JLabel("Postal Code:");
+    postalCodeLabel.setBounds(50, 200, 75, 25);
+    frame.add(postalCodeLabel);
 
-		userPasswordLabel = new JLabel ("password:");
-		userPasswordLabel.setBounds(50,150,75,25);
-		frame.add(userPasswordLabel);
+    userIdfield = new JTextField();
+    userIdfield.setBounds(125, 100, 200, 25);
+    frame.add(userIdfield);
 
-		PostalCodeLabel = new JLabel ("Postal Code:");
-		PostalCodeLabel.setBounds(50,200,75,25);
-		frame.add(PostalCodeLabel);
+    userPasswordField = new JPasswordField();
+    userPasswordField.setBounds(125, 150, 200, 25);
+    frame.add(userPasswordField);
 
-		userIDField = new JTextField();
-		userIDField.setBounds(125,100,200,25);
-		frame.add(userIDField);
+    postalCodeField = new JTextField();
+    postalCodeField.setBounds(125, 200, 200, 25);
+    frame.add(postalCodeField);
 
-		userPasswordField = new JPasswordField();
-		userPasswordField.setBounds(125,150,200,25);
-		frame.add(userPasswordField);
+    messageLabel = new JLabel("The text about the access will appear here"); 
+    //message that show if login was successful
+    messageLabel.setBounds(125, 350, 250, 35);
+    frame.add(messageLabel);
 
-		PostalCodeField = new JTextField();
-		PostalCodeField.setBounds(125,200,200,25);
-		frame.add(PostalCodeField);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //exit from application
+    frame.setSize(420, 420); //sets the x-dimension, and y-dimension of application
+    frame.setLayout(null);
+    frame.setVisible(true);
+    frame.getContentPane().setBackground(new Color(204, 204, 204)); //change colour of background
+    
+    login = new Login(this, userIdfield, userPasswordField, messageLabel, postalCodeField);
 
-		messageLabel = new JLabel("The text about the access will appear here");//message that show if login was successful
-		messageLabel.setBounds(125,350,250,35);
-		frame.add(messageLabel);
+    loginButton = new JButton("Login");
+    loginButton.setBounds(125, 300, 100, 25);
+    loginButton.setFocusable(false);
+    loginButton.addActionListener(new ActionListener() {
+      public  void actionPerformed(ActionEvent e) {
+        xx = login.loginmethod();
+        if (xx == true) {
+          frame.dispose();
+        }
+      }
+    });
+    frame.add(loginButton);
 
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit from application
-		frame.setSize(420,420);//sets the x-dimension, and y-dimension of application
-		frame.setLayout(null);
-		frame.setVisible(true);
-		frame.getContentPane().setBackground(new Color(50,180,0)); //change color of background
-
-		Login login = new Login(this,userIDField, userPasswordField,messageLabel,PostalCodeField);
-
-		loginButton = new JButton("Login");
-		loginButton.setBounds(125,300,100,25);
-		loginButton.setFocusable(false);
-		loginButton.addActionListener(new ActionListener() {
-			public  void actionPerformed(ActionEvent e){
-				login.loginmethod();
-				}
-			}); //I wanted a subject of type Actionlistener
-		frame.add(loginButton);
-
-		//ImageIcon logoImage = new ImageIcon("door2doorlogo.jpg");
-		//frame.setIconImage(logoImage.getImage());
-
-	}
+  }
 
 }
-
-

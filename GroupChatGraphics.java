@@ -1,3 +1,5 @@
+package Door2Door;
+
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import java.awt.*;
@@ -10,22 +12,16 @@ public class GroupChatGraphics extends JFrame {
 	JTextField messageField;
 	JButton messageButton;
 	JLabel messageLabel;
-	String myuser;
-	String areacode;
 
     private static final long serialVersionUID = 1L;
 
-    GroupChatGraphics(String myuser,String areacode) {
-    	this.myuser=myuser;
-    	this.areacode=areacode;
+    GroupChatGraphics() {
 		JFrame frame = new JFrame();
 		frame.setTitle("Send a message to Door2Door");
 
 		sendMessage = new JLabel ("message:");
 		sendMessage.setBounds(50,100,75,25);
 		frame.add(sendMessage);
-
-
 
 		messageLabel = new JLabel("The text about the access will appear here");
 		messageLabel.setBounds(115,240,240,120);
@@ -41,8 +37,7 @@ public class GroupChatGraphics extends JFrame {
 		messageField.setBounds(125,100,200,25);
 	    frame.add(messageField);
 
-        //GroupChatMessages gr= new GroupChatMessages(areacode);
-		GroupChat g = new GroupChat(this,messageField,messageLabel,myuser,areacode);
+		g = new GroupChat(this,messageField,messageLabel);
 
 		messageButton = new JButton("Message");
 		messageButton.setBounds(125,200,100,25);
@@ -50,15 +45,16 @@ public class GroupChatGraphics extends JFrame {
 		messageButton.addActionListener(new ActionListener() {
 		public  void actionPerformed(ActionEvent e){
 			g.groupchatmethod();
-			//gr.showMessages();
 			}
-		}); //I wanted a subject of type Actionlistener
+		}); 
 		frame.add(messageButton);
 
-		//ImageIcon logoImage = new ImageIcon("door2doorlogo.jpg");
-		//frame.setIconImage(logoImage.getImage());
+		ImageIcon logoImage = new ImageIcon("door2doorlogo.jpg");
+		frame.setIconImage(logoImage.getImage());
 
 		}
 
 }
+
+
 
