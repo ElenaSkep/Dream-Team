@@ -20,7 +20,7 @@ It is important that these and our jar file are in the same file.
 
 ## Run Door2Door
 If you don't have an account in our app you should create one with the option **login**, otherwise you can **sign up**.
-After you enter our app successful you will use our welcome page that present you three options:**one to one messages**.
+After you enter our app successful you will see our welcome page that presents you three options:**one to one messages**.
 There you can search a person that you like and if that person is in our app you can send him/her a private message 
 and get to know them.The second option is the **groupchat**.There you can join a groupchat where people that you share
 the same postal code can communicate through messages.You can even show what messages you like using the button like.
