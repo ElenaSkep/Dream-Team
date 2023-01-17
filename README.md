@@ -11,7 +11,7 @@ who lives next to you.
 In order to compile our program you should use the command mvn compile.
 
 ## Execution of Door2Door
-You can execute our programm using the command  java -jar Door2Door.jar
+You can execute our program using the command  java -jar Door2Door.jar
 Our database called **mydb.db** should be on the resources and target.
 Also our logo called **doortodoorlogo.png** should be on the resources. 
 Our database and logo are in our repository in github.
@@ -19,11 +19,11 @@ Our database and logo are in our repository in github.
 It is important that these and our jar file are in the same file.
 
 ## Run Door2Door
-If you don't have an account in our app you should create one with the option **login**, otherwise you can **sign up**.
-After you enter our app successful you will see our welcome page that presents you three options:**one to one messages**.
+If you don't have an account in our app you should create one with the option **sign up**, otherwise you can **login**.
+After you enter our app successfully you will see our welcome page that presents you three options:**one to one messages**.
 There you can search a person that you like and if that person is in our app you can send him/her a private message 
 and get to know them.The second option is the **groupchat**.There you can join a groupchat where people that you share
-the same postal code can communicate through messages.You can even show what messages you like using the button like.
+the same postal code with can communicate through messages.You can even show what messages you like using the button like.
 Our third option is **'your messages'** where you can see the messages
 that other people have sent you.
 
