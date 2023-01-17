@@ -13,7 +13,7 @@ In order to compile our program you should use the command mvn compile.
 ## Execution of Door2Door
 You can execute our programm using the command  java -jar Door2Door.jar
 Our database called **mydb.db** should be on the resources and target.
-Also our logo called **doortodoorlogo.png** should be on the resources 
+Also our logo called **doortodoorlogo.png** should be on the resources. 
 Our database and logo are in our repository in github.
 
 It is important that these and our jar file are in the same file.
