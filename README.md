@@ -1,9 +1,9 @@
 # Door2Door
 > Keep your friends close and your neighbors closer
 
-Door2Door is an app that gives the opportunity to its users to connect with their neighbors.You can communicate with them
-through one to one messages or chatrooms of your neighborhood.These services give the users the chance to learn about their 
-neighborhood,different activities that take place there such as volunteering.Door2Door is there to give you the motive to learn 
+Door2Door is an app that gives the opportunity to its users to connect with their neighbours.You can communicate with them
+through one to one messages or chatrooms of your neighbourhood.These services give the users the chance to learn about their 
+neighbourhood,different activities that take place there such as volunteering.Door2Door is there to give you the motive to learn 
 who lives next to you.
 
 
