@@ -27,12 +27,12 @@ the same postal code with can communicate through messages.You can even show wha
 Our third option is **'your messages'** where you can see the messages
 that other people have sent you.
 
-##Github
+## Github
 Our github is organised as a maven project.When you enter our repository you will see two files 1)src and 2)target/classes/META-INF
 The src file contains two sections the main and the test/java/door2door. Inside the main you can see our codes from the option 
 java/door2door.Also you will see the option resources where you can find our database called mydb.db.In the file test/java/door2door(inside scr) you will see the tests that we have completed with maven. In the second file target/classes/META-INF you will see our pom.xml and pom.properties.
 
-##UML
+## UML
 [UML]().
 
 ## Algorithms and Data Structure
