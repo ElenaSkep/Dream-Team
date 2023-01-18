@@ -33,7 +33,7 @@ The src file contains two sections the main and the test/java/door2door. Inside 
 java/door2door.Also you will see the option resources where you can find our database called mydb.db.In the file test/java/door2door(inside scr) you will see the tests that we have completed with maven. In the second file target/classes/META-INF you will see our pom.xml and pom.properties.
 
 ## UML
-[UML]().
+[UML](https://github.com/ElenaSkep/Dream-Team/blob/main/uml.png).
 
 ## Algorithms and Data Structure
 In our app we use the search algorithm.This algorithm is used in the option one to one messages in order to search 
