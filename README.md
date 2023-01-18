@@ -22,8 +22,7 @@ After you enter our app successfully you will see our welcome page that presents
 There you can search a person that you like and if that person is in our app you can send him/her a private message 
 and get to know them.The second option is the **groupchat**.There you can join a groupchat where people that you share
 the same postal code with can communicate through messages.You can even show what messages you like using the button like.
-Our third option is **'your messages'** where you can see the messages
-that other people have sent you.
+Our third option is **messages**.If you have received private messages a frame with them will appear otherwise you will not be able to see something.
 
 ## Github
 Our github is organised as a maven project.When you enter our repository you will see two files 1)src and 2)target/classes/META-INF
