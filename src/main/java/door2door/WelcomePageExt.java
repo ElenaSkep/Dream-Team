@@ -26,20 +26,19 @@ public class WelcomePageExt {
   String myuser;
   String tk;
   boolean flag;
-  Connection con54 = null;
-  PreparedStatement pst19 = null;
-  ResultSet rs3 = null;
-  Statement stmt = null;
-  int i=0;
-
+  Connection con54 = null; 
+  PreparedStatement pst19 = null; 
+  ResultSet rs3 = null; 
+  Statement stmt = null; 
+  
   /**
    * Class constructor specifying number of objects to create.
    */
   WelcomePageExt(String a, String b) {
     myuser = a;
     tk = b;
-  }
-
+  } 
+  
   /**
    *messages1() inserts the given data in the database.
    *It prints a hello message to welcome the user with the given username.
@@ -50,21 +49,21 @@ public class WelcomePageExt {
   public boolean messages1() {
    // ImageIcon image = new ImageIcon(getClass().getResource("/door2doorlogo2.png"));
    // frame.setIconImage(image.getImage());
-    try {
-
+    try { 
+      
       con54 = DriverManager.getConnection("jdbc:sqlite:mydb.db");
-
+     
       stmt = con54.createStatement();
-
+      
       System.out.println("hello" + myuser);
       JFrame frame1 = new JFrame();
       int i3 = 0;
       rs3 = stmt.executeQuery("SELECT  fromid , message FROM one2one WHERE "
     	      + "toid = '" + myuser + "';");
       while (rs3.next()) {
-        int i=1;
+        
         System.out.println("hello" + myuser);
-
+       
         JLabel label = new JLabel(rs3.getString("fromid") + ": " + rs3.getString("message"));
         label.setBounds(0, i3 * 25, 500, 50);
         frame1.add(label);
@@ -79,7 +78,7 @@ public class WelcomePageExt {
       }
       //}
 
-
+      
       stmt.close();
       con54.close();
     } catch (Exception e1) {
@@ -94,12 +93,9 @@ public class WelcomePageExt {
         }
       } catch (SQLException e3) {
         e3.printStackTrace();
-      }
-    }
-    if(i==0){
-		System.out.println("No New Messages")
-	}
+      } 
+    } 
     flag = true;
-    return flag;
-  }
-}
+    return flag;  
+  } 
+} 
