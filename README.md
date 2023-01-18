@@ -8,15 +8,13 @@ who lives next to you.
 
 
 ## Compile
-In order to compile our program you should use the command mvn compile compile assembly:single
+In order to compile our program you should use the command mvn clean compile assembly:single
 
 ## Run Door2Door
 Firstly our database called **mydb.db** should be put on the resources and target.
-Our database can be found in our repository in github.
+Our database can be found in our repository in github and specifically in the path src/main/resources/.
 
 After that you can now run our programm using the command **java -cp target/Door2Door-0.0.1-SNAPSHOT-jar-with-dependencies.jar door2door.Main**
-
-It is important that these and our jar file are in the same file.
 
 ## About Door2Door
 If you don't have an account in our app you should create one with the option **sign up**, otherwise you can **login**.
