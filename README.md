@@ -37,7 +37,7 @@ In our app we use the search algorithm.This algorithm is used in the option one 
 if the person you have chosen is a user in our app.
 
 The data structure that we use is a database that was created with the help of SQLite.
-Our database contains four tables the one2one(fromid,toid,message,date),groupmess(fromid,message,date,area_code,No),Likes(likes,No).
+Our database contains four tables the one2one(fromid,toid,message,date),groupmess(fromid,message,date,area_code,No),Likes(likes,No). T
 
 
 
