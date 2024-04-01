@@ -23,12 +23,7 @@ There you can search a person that you like and if that person is in our app you
 and get to know them.The second option is the **groupchat**.There you can join a groupchat where people that you share
 the same postal code with can communicate through messages.You can even show what messages you like using the button like.
 Our third option is **messages**.If you have received private messages a frame with them will appear otherwise you will not be able to see something.
-
-## Controversial Usage of AI
-> Photo-scraping scandal of IBM
-
-In 2019 IBM,a multinational 
-
+ 
 ## Github
 Our github is organised as a maven project.When you enter our repository you will see two files 1)src and 2)target/classes/META-INF
 The src file contains two sections the main and the test/java/door2door. Inside the main you can see our codes from the option 
